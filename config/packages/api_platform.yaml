@@ -18,7 +18,7 @@ api_platform:
                 type: header
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
-    title: Hello API Platform
+    title: ToDOList
     version: 1.0.0
     # Enable the Varnish integration // Disable
 #    http_cache:
