@@ -13,5 +13,6 @@ return [
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => ['all' => true],
     FOS\OAuthServerBundle\FOSOAuthServerBundle::class => ['all' => true],
     App\BaseBundle\BaseBundle::class => ['all' => true],
+    App\FireBaseBundle\FireBaseBundle::class => ['all' => true],
 
 ];
