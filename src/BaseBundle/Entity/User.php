@@ -14,10 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 use App\BaseBundle\Controller\CurrentUser;
 use App\BaseBundle\Controller\CreateUser;
-use App\BaseBundle\Controller\DecisionCaptcha;
 use App\BaseBundle\Controller\UpdateUser;
-use App\BaseBundle\Controller\ActivateUser;
-use App\BaseBundle\Controller\ResetUser;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
@@ -65,47 +62,28 @@ class User extends BaseUser
 
     /**
      * @var bool
-     * @Groups({"GetUser","GetObjUser","SetUser"})
+     * @Groups({"GetUser","GetObjUser"})
      */
     protected $enabled;
 
     /**
      * @Groups({"GetUser","GetObjUser","SetUser"})
+     * @Assert\NotBlank()
      * @Assert\Email()
      */
     protected $email;
 
     /**
-     * @var string Имя
-     * @ORM\Column(name="first_name",type="string",nullable=true)
-     * @Groups({"GetUser","GetObjUser","SetUser"})
-     */
-    public $firstName;
-
-    /**
-     * @var string Фамилия
-     * @ORM\Column(name="last_name",type="string",nullable=true)
-     * @Groups({"GetUser","GetObjUser","SetUser"})
-     */
-    public $lastName;
-
-    /**
-     * @var string Отчество
-     * @ORM\Column(name="second_name",type="string",nullable=true)
-     * @Groups({"GetUser","GetObjUser","SetUser"})
-     */
-    public $secondName;
-
-    /**
      * @var
      * @Groups({"SetUser"})
+     * @Assert\NotBlank()
      * @Assert\Regex("/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z].*?[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/s")
      */
     protected $password;
 
-
     /**
-     * @Groups({"GetUser","SetUser","SetObjUser","GetObjUser"})
+     * @Groups({"GetUser","GetObjUser","SetUser"})
+     * @Assert\NotBlank()
      */
     protected $username;
     /**

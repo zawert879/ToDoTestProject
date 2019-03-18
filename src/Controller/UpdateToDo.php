@@ -5,9 +5,10 @@
  * Date: 14.05.18
  * Time: 18:34
  */
-namespace App\BaseBundle\Controller;
+namespace App\Controller;
 
 use App\BaseBundle\Entity\User;
+use App\Entity\ToDoList;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Security\Core\Security;
 
@@ -15,7 +16,7 @@ use Symfony\Component\Security\Core\Security;
  * Class CurrentUser
  * @package App\Controller
  */
-class CurrentUser
+class UpdateToDo
 {
     private $security;
 
@@ -24,18 +25,16 @@ class CurrentUser
         $this->security = $security;
     }
 
-    public function __invoke(): ?User
+    public function __invoke(ToDoList $data): ?ToDoList
     {
         /** @var User $user */
         $user = $this->security->getUser();
-        if (!isset($user)){
-            throw new HttpException(401,"Not Authorized");
+        if (!$this->security->isGranted('ROLE_ADMIN')){
+            if ($data->user != $user){
+                throw new HttpException(403,'Forbidden');
+            }
         }
-
-        if (!$user->isEnabled()){
-            throw new HttpException(409,'you not enabled');
-        }
-        return $user;
+        return $data;
 
     }
 }

@@ -37,7 +37,9 @@ security:
 
     access_control:
 
+        - { path: ^/api/to_do_lists, method: [PUT,DELETE,POST],   roles: [ROLE_USER] }
         - { path: ^/, roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
+
 
     role_hierarchy:
         ROLE_USER: [IS_AUTHENTICATED_ANONYMOUSLY]
