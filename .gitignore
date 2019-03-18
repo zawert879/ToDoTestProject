@@ -1,3 +1,5 @@
+.idea
+.env
 /helm/api/charts
 
 ###> symfony/framework-bundle ###
