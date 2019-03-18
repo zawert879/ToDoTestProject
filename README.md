@@ -1,5 +1,9 @@
 # ToDo List
 
+## CRON
+
+каждую минуту `bin/console php app:send:notification`
+
 ##Авторизация по стандатру oAuth2
 
 логин:
